@@ -138,13 +138,13 @@ gulp.task('build', function () {
 
 gulp.task('default', function () {
   runSequence(
+    'mock',
     'html',
     'assets',
     'css',
     'jshint',
     'test',
     'js',
-    'mock',
     'connect',
     'open',
     'watch');
