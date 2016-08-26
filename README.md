@@ -35,3 +35,7 @@
     
 # Run
     gulp
+
+### Note
+- Valid user: user
+- Valid password: 123
