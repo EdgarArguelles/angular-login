@@ -25,6 +25,9 @@
 - mock API
 - reloads the browser upon save
 
+# Global Install
+    npm i bower drakov gulp gulp-cli -g
+
 # Install
     npm i
     bower i
