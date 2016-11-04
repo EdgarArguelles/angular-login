@@ -1,5 +1,4 @@
 'use strict';
-
 var gulp = require('gulp');
 var connect = require('gulp-connect'); // Runs a local dev server
 var open = require('gulp-open'); // Open a URL in a web browser
@@ -14,7 +13,7 @@ var buffer = require('vinyl-buffer'); // Use conventional text buffer with Gulp
 var argv = require('yargs').argv; // Allows send args to gulp tasks
 var gulpif = require('gulp-if'); // Conditions the execution of a task
 var uglify = require('gulp-uglify'); // Uglify JS code
-var jshint = require('gulp-jshint'); // Lint JS files
+var eslint = require('gulp-eslint'); // Lint JS files
 var KarmaServer = require('karma').Server; // Start test server
 var drakov = require('drakov'); // Mock API
 var runSequence = require('run-sequence'); // Run tasks in sequence
@@ -86,11 +85,12 @@ gulp.task('js', function () {
     .pipe(connect.reload());
 });
 
-// Evaluate JS code with jshint rules
-gulp.task('jshint', function () {
+// Evaluate JS code with eslint rules
+gulp.task('eslint', function () {
   gulp.src(config.paths.js)
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 // Run tests
@@ -123,7 +123,7 @@ gulp.task('mock', function () {
 
 gulp.task('build-js', function () {
   runSequence(
-    'jshint',
+    'eslint',
     'test',
     'js');
 });
@@ -142,7 +142,7 @@ gulp.task('default', function () {
     'html',
     'assets',
     'css',
-    'jshint',
+    'eslint',
     'test',
     'js',
     'connect',

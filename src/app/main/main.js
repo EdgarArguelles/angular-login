@@ -1,5 +1,5 @@
+'use strict';
 (function () {
-  'use strict';
   angular.module('main', [require('./main.tpl.html')])
     .config(Config)
     .controller('MainCtrl', MainCtrl);
@@ -8,7 +8,7 @@
     $stateProvider.state('main', {
       url: '/main',
       views: {
-        'main': {
+        main: {
           controller: 'MainCtrl as vm',
           templateUrl: 'main.tpl.html',
           resolve: {
@@ -24,7 +24,7 @@
   function MainCtrl($location, LoginSvc) {
     this.logout = function () {
       LoginSvc.logout().then(
-        function (response) {
+        function () {
           $location.path('/login');
         }
       );

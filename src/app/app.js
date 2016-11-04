@@ -1,5 +1,5 @@
+'use strict';
 (function () {
-  'use strict';
   require('angular');
   require('angular-ui-router');
   require('angular-cookies');
@@ -24,14 +24,15 @@
 
     $provide.factory('myHttpInterceptor', function ($rootScope, $q) {
       return {
-        'response': function (response) {
+        response: function (response) {
           return response;
         },
-        'responseError': function (rejection) {
+        responseError: function (rejection) {
           switch (rejection.status) {
             case 500 :
               $rootScope.$broadcast('FailedAuthentication');
               break;
+            default:
           }
           return $q.reject(rejection);
         }

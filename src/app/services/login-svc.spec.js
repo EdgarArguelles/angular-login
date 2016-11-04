@@ -1,5 +1,5 @@
+'use strict';
 describe('LoginSvc', function () {
-  'use strict';
   var api = 'http://localhost:3030';
   var http, cookies, service;
 

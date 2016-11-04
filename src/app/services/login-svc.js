@@ -1,5 +1,5 @@
+'use strict';
 (function () {
-  'use strict';
   angular.module('services.login', [])
     .factory('LoginSvc', LoginSvc);
 

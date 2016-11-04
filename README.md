@@ -5,7 +5,7 @@
 - Angular
 - Bootstrap
 - Browserify
-- Jshint
+- Eslint
 - Karma / Jasmine
 - Less
 - Gulp
@@ -14,7 +14,7 @@
 
 ## Gulp Build tasks:
 - compile angular templates into angular modules
-- evaluate JS code via Jshint
+- evaluate JS code via Eslint
 - test JS code via Karma / Jasmine
 - compile Less into css code
 - bundle JS and CSS files

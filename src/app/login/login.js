@@ -1,5 +1,5 @@
+'use strict';
 (function () {
-  'use strict';
   angular.module('login', [require('./login.tpl.html')])
     .config(Config)
     .controller('LoginCtrl', LoginCtrl);
@@ -8,7 +8,7 @@
     $stateProvider.state('login', {
       url: '/login',
       views: {
-        'main': {
+        main: {
           controller: 'LoginCtrl as vm',
           templateUrl: 'login.tpl.html'
         }
@@ -32,7 +32,7 @@
 
       var self = this;
       LoginSvc.login(credentials).then(
-        function (response) {
+        function () {
           $location.path('/main');
         },
         function (response) {
