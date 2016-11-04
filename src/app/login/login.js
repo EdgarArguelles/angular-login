@@ -1,6 +1,9 @@
 'use strict';
 (function () {
-  angular.module('login', [require('./login.tpl.html')])
+  require('./login.tpl.html');
+  require('../services/login-svc');
+
+  angular.module('login', ['login.tpl.html', 'services.login'])
     .config(Config)
     .controller('LoginCtrl', LoginCtrl);
 

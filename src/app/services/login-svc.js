@@ -1,6 +1,8 @@
 'use strict';
 (function () {
-  angular.module('services.login', [])
+  require('angular-cookies');
+
+  angular.module('services.login', ['ngCookies'])
     .factory('LoginSvc', LoginSvc);
 
   function LoginSvc($http, $cookies) {

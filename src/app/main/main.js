@@ -1,6 +1,9 @@
 'use strict';
 (function () {
-  angular.module('main', [require('./main.tpl.html')])
+  require('./main.tpl.html');
+  require('../services/login-svc');
+
+  angular.module('main', ['main.tpl.html', 'services.login'])
     .config(Config)
     .controller('MainCtrl', MainCtrl);
 

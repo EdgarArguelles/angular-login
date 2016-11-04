@@ -2,12 +2,10 @@
 (function () {
   require('angular');
   require('angular-ui-router');
-  require('angular-cookies');
-  require('./services/login-svc');
   require('./login/login');
   require('./main/main');
 
-  angular.module('app', ['ui.router', 'ngCookies', 'services.login', 'login', 'main'])
+  angular.module('app', ['ui.router', 'login', 'main'])
     .config(BaseAppConfig)
     .controller('AppCtrl', AppCtrl);
 
