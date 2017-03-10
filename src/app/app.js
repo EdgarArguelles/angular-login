@@ -10,9 +10,14 @@
     .controller('AppCtrl', AppCtrl);
 
   function AppCtrl($scope, $log, $state) {
+    // The server is not responding
+    $scope.$on('ServerDown', function () {
+      $log.error('Server is not responding!');
+      $state.go('login');
+    });
+
     // Redirect to login if not authorized
     $scope.$on('FailedAuthentication', function () {
-      $log.error('Failed Authentication!');
       $state.go('login');
     });
   }
@@ -27,10 +32,11 @@
         },
         responseError: function (rejection) {
           switch (rejection.status) {
-            case 500 :
-              $rootScope.$broadcast('FailedAuthentication');
+            case -1:
+              $rootScope.$broadcast('ServerDown');
               break;
             default:
+              $rootScope.$broadcast('FailedAuthentication');
           }
           return $q.reject(rejection);
         }
